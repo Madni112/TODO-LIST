@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="todoContainer">
+    <header>
     <h1>TODO LIST</h1>
-    <div class="form">
-    <input id="todoInput" type="text" placeholder="Enter any Item">
-    <button onclick="addTodo(this)" id="todobtn">ADD +</button>
+    </header>
+    <div class="todoContainer">
+    <form onsubmit="addTodo()" action="#" class="form">
+    <input id="todoInput" type="text" placeholder="Enter any Task..">
+    <button id="todobtn">+ &nbsp; ADD</button>
     </div>
     <ul id="todoList" style="text-align: left;">
+        <h1>The List</h1>
     </ul>
     <script src="./app.js"></script>
-    </div>
+</from>
 </body>
 </html>
