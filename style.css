@@ -1,26 +1,44 @@
 *{
     margin: 0;
     padding: 0;
+    transition: 0.5s;
 }
 body{
-    background-color: black;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+header{
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    height: 8vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+header h1{
+    grid-column: 1/ 3;
+    font-size: 40px;
+    color: #ffffff; 
+    text-shadow: 
+        0 0 5px rgba(0, 234, 255, 0.8),
+        0 0 15px rgba(0, 234, 255, 0.6);
+    cursor: pointer;
+    text-align: center;
 }
 .todoContainer{
     padding: 20px 0;
     margin: 0 auto;
     width: 90%;
-    text-align: center;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 1fr 1fr;
 }
-.todoContainer h1{
-    margin: 40px auto;
-    font-size: 50px;
-    color: blue;
-    text-decoration: underline 1px;
-    text-shadow: 0 0 5px whitesmoke;
-    cursor: pointer;
-}
+
 .form{
+    width: 100%;
+    grid-column: 1/3;
     margin: 80px 0;
+    text-align: center;
 }
 #todoInput{
     width: 70%;
@@ -31,7 +49,8 @@ body{
     margin-right: 10px ;
 }
 #todoInput:focus{
-    outline: 3px solid blue;
+    outline: 3px solid black;
+    box-shadow: 0 0 10px black;
 }
 #todoInput::placeholder{
     font-size: 20px;
@@ -39,47 +58,101 @@ body{
 }
 #todobtn{
     padding: 10px 100px;
-    background-color: blue;
+    background: #0088ff;
     font-size: 18px;
     color: white;
     border-radius: 10px;
     border: none;
+    transition: 0.5s;
 }
 #todobtn:hover{
     background-color: rgba(0, 0, 255, 0.585);
     cursor: pointer;
+    transition: 0.5s;
+}
+#todoList{
+    grid-column: 1/3;
+    width: 50%;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.53);
+    border-radius: 10px;
+    padding: 10px;
+    justify-self: center;
+}
+#todoList h1{
+    text-align: center;
+    color: #1E3842; 
+    text-shadow: 
+        0 0 5px rgba(3, 238, 255, 0.8),
+        0 0 15px rgba(255, 255, 255, 0.6);
 }
 #todoList li {
     color: white;
-    font-size: 25px;
+    font-size: 28px;
     margin: 20px;
     display: grid;
     grid-template-columns: 85% 10% 5%;
-    gap: 10px;  
 }
 #todoList li span{
-    cursor: pointer;
+    width: max-content;
+    color: black;
 }
-#todoList li :nth-child(3){
+#todoList li span:hover{
     background-color: transparent;
-    color: white;
-    font-size: 20px;
-    padding: 5px 10px;
-    border-radius: 50px;
-    border: none;
+    cursor: pointer;
+    text-shadow: 0 0 2px black;
 }
-#todoList li :nth-child(3):hover{
-    background-color: rgba(255, 0, 0, 0.481);
+.fa-pencil{
+    width: max-content;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    padding: 6px 6px;
+    border-radius: 8px;
+
+}
+.fa-pencil:hover{
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.trash-button {
+    background: #ff4800;
+    border-radius: 8px;
+    padding: 10px;
+    width: 16px;
+    height: 20px;
+    position: relative;
     cursor: pointer;
 }
-#todoList li :nth-child(2){
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
+
+.trash-lid {
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: relative;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+    transform-origin: left bottom;
 }
-#todoList li :nth-child(2):hover{
-    background-color: rgba(0, 0, 255, 0.585);
-    cursor: pointer;
+.trash-bin {
+    width: 90%;
+    height: 14px;
+    background: white;
+    margin: 1px auto;
+    border-radius: 0 0 3px 3px;
+    padding-top: 2px;
+}
+
+.trash-button:hover .trash-lid {
+    transform: rotate(-45deg) translateY(-1px);
+    transition: 0.5s;
+}
+.trash-button:hover .trash-bin{
+    transition: 0.5s;
+}
+.trash-button:hover{
+box-shadow: 0 0 5px black;
+opacity: 0.5;
+transition: 0.5s;
 }
