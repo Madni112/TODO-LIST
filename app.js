@@ -57,8 +57,6 @@ function addTodo() {
     })
     li.append(liSpan, updatebtn, delbtn)
     todoList.style.opacity="1"
-    if(liSpan.innerText == liSpan.innerText){
-        alert("Item Already Exist")
-    }
 }
+
 
