@@ -8,60 +8,57 @@
 //     ele.style.backgroundColor = "Red"
 //     ele.textContent = "Text Changed" // used "this" key in button onclick function name(this)
 // }
-const todoList=document.getElementById("todoList")
-const Inputvalue=document.getElementById("todoInput")
+const todoList = document.getElementById("todoList")
+const Inputvalue = document.getElementById("todoInput")
+const todoBtn = document.getElementById("todobtn")
+let editLi = null;
+todoList.style.opacity="0"
 Inputvalue.focus()
-function addTodo(ele){
-    let cleanInput=Inputvalue.value
-    if(Inputvalue.value == ""){
+function addTodo() {
+    if (Inputvalue.value == "") {
         alert("Please Enter Value")
         return
     }
+     if (editLi !== null) {
+        editLi.querySelector("span").innerText = Inputvalue.value;
+        editLi = null;
+        todoBtn.innerHTML = "+ &nbsp; ADD";
+        Inputvalue.value = "";
+        Inputvalue.focus();
+        return;
+    }
     const li = document.createElement("li")
-    const delbtn = document.createElement("button")
+    const delbtn = document.createElement("div")
     const hr = document.createElement("hr")
     const liSpan = document.createElement("Span")
     todoList.append(li)
-    li.append(liSpan)
     todoList.append(hr)
     liSpan.innerText = Inputvalue.value
-    Inputvalue.value= ""
+    Inputvalue.value = ""
     Inputvalue.focus()
-    const updatebtn = document.createElement("button")
-    updatebtn.textContent = "Update"
-    li.append(updatebtn)
-    liSpan.addEventListener("click", ()=>{
-        Inputvalue.value=cleanInput
+    const updatebtn = document.createElement("i")
+    updatebtn.className = "fa fa-pencil"
+    updatebtn.addEventListener("click", () => {
+
+        Inputvalue.value = liSpan.innerText
         Inputvalue.focus()
-        ele.textContent="Update"
-        ele.addEventListener("click", ()=>{
-            li.remove()
-            hr.remove()
-            li.textContent=Inputvalue.value
-            ele.textContent="ADD +"
-            Inputvalue.focus()
-        })
+        editLi = li
+        todoBtn.innerText = "Update"
     })
-    updatebtn.addEventListener("click", ()=>{
-        
-        Inputvalue.value=cleanInput
-        Inputvalue.focus()
-        ele.textContent="Update"
-        ele.addEventListener("click", ()=>{
-            li.remove()
-            hr.remove()
-            li.textContent=Inputvalue.value
-            ele.textContent="ADD +"
-            Inputvalue.focus()
-        })
-    })
-    
-    delbtn.textContent = "✕"
-    delbtn.addEventListener("click", ()=>{
+    delbtn.className="trash-button"
+    delbtn.innerHTML = " <div class='trash-lid'></div> <div class='trash-bin'></div>"
+    delbtn.addEventListener("click", () => {
         li.remove()
         hr.remove()
         Inputvalue.focus()
+        if (todoList.querySelectorAll("li").length === 0) {
+        todoList.style.opacity = "0";
+    }
     })
-    li.append(delbtn)
+    li.append(liSpan, updatebtn, delbtn)
+    todoList.style.opacity="1"
+    if(liSpan.innerText == liSpan.innerText){
+        alert("Item Already Exist")
+    }
 }
 
