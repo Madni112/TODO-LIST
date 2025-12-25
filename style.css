@@ -91,7 +91,7 @@ header h1{
     font-size: 28px;
     margin: 20px;
     display: grid;
-    grid-template-columns: 85% 10% 5%;
+    grid-template-columns: 80% 10% 10%;
 }
 #todoList li span{
     width: max-content;
@@ -103,9 +103,9 @@ header h1{
     text-shadow: 0 0 2px black;
 }
 .fa-pencil{
-    width: max-content;
+    width: 1.5rem;
     background: linear-gradient(135deg, #36d1dc, #5b86e5);
-    padding: 6px 6px;
+    padding: 6px;
     border-radius: 8px;
 
 }
@@ -155,4 +155,43 @@ header h1{
 box-shadow: 0 0 5px black;
 opacity: 0.5;
 transition: 0.5s;
+}
+@media screen and (max-width: 420px) {
+    header{
+        height: 4vh;
+    }
+    header h1{
+        font-size: 1.5rem;
+    }
+    #todoInput{
+        width: 50%;
+
+    }
+    #todoInput::placeholder{
+        font-size: 14px;
+    }
+    #todobtn{
+        padding: 10px;
+        font-size: 14px;
+    }
+    #todoList{
+        width: 90%;
+    }
+    #todoList li{
+        gap: 10px;
+    }
+    #todoList li span{
+        font-size: 18px;
+    }
+    .fa-pencil{
+        width: max-content;
+        height: max-content;
+    }
+    .fa{
+        font-size: 23px !important;
+    }
+    .trash-button{
+        width: 14px;
+        height: 15px;
+    }
 }
