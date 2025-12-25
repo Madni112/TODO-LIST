@@ -1,13 +1,3 @@
-// const btn = document.getElementById("btn")
-// btn.addEventListener('click', () =>{
-//     btn.textContent = "New Click"
-// })
-
-// function onClickBtn(ele){
-//     ele.style.border = "none"
-//     ele.style.backgroundColor = "Red"
-//     ele.textContent = "Text Changed" // used "this" key in button onclick function name(this)
-// }
 const todoList = document.getElementById("todoList")
 const Inputvalue = document.getElementById("todoInput")
 const todoBtn = document.getElementById("todobtn")
@@ -42,8 +32,13 @@ function addTodo() {
 
         Inputvalue.value = liSpan.innerText
         Inputvalue.focus()
+        delbtn.style.opacity="0"
         editLi = li
         todoBtn.innerText = "Update"
+        let updateTodoBtn = todoBtn
+        updateTodoBtn.addEventListener("click", ()=>{
+            delbtn.style.opacity="1"
+        } )
     })
     delbtn.className="trash-button"
     delbtn.innerHTML = " <div class='trash-lid'></div> <div class='trash-bin'></div>"
@@ -58,5 +53,4 @@ function addTodo() {
     li.append(liSpan, updatebtn, delbtn)
     todoList.style.opacity="1"
 }
-
 
